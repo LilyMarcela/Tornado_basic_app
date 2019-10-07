@@ -1,6 +1,7 @@
 import tornado.ioloop
 import tornado.web
 from tornado.web import RequestHandler
+import os
 
 class loanValueRequestHandler(tornado.web.RequestHandler):
 
@@ -30,5 +31,6 @@ def make_app():
 
 if __name__ == "__main__":
     app = make_app()
-    app.listen(8888)
+    port = int(os.getenv('PORT', 4200))
+    app.listen(port, address='0.0.0.0')
     tornado.ioloop.IOLoop.current().start()
